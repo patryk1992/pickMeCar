@@ -39,9 +39,14 @@ public class HomeController {
 		String formattedDate = dateFormat.format(date);
 
 		//model.addAttribute("serverTime", formattedDate);
-		List<Token> listUsers = userDao.list();
-		logger.info("Welcome list"+ listUsers.toString());
-
+//		List<Token> listUsers = userDao.list();
+//		logger.info("Welcome list"+ listUsers.toString());
+		Token token = new Token("new1234", new Date(),  new Date());
+		token.setId(1);
+//		userDao.saveOrUpdate(token);
+//		logger.info("Welcome list"+ userDao.get(1).getToken());
+//		userDao.delete(2);
+		
 		return "home";
 	}
 

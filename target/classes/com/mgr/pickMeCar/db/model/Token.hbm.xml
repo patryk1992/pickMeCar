@@ -9,13 +9,13 @@
             <generator class="identity" />
         </id>
         <property name="token" type="string">
-            <column name="token" not-null="true" />
+            <column name="token" />
         </property>
         <property name="created" type="timestamp">
-            <column name="created" length="19" not-null="true" />
+            <column name="created" length="19"  />
         </property>
         <property name="expires" type="timestamp">
-            <column name="expires" length="19" not-null="true" />
+            <column name="expires" length="19"  />
         </property>
     </class>
 </hibernate-mapping>
