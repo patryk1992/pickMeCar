@@ -3,16 +3,16 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2016-03-07 13:22:21 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="HiberPkg.Track" table="track" catalog="drive_db">
+    <class name="com.mgr.pickMeCar.db.model.Track" table="track" catalog="drive_db">
         <id name="id" type="java.lang.Integer">
             <column name="id" />
             <generator class="identity" />
         </id>
-        <property name="from" type="string">
-            <column name="from" length="45" />
+        <property name="fromPlace" type="string">
+            <column name="fromPlace" length="45" />
         </property>
-        <property name="to" type="string">
-            <column name="to" length="45" />
+        <property name="toPlace" type="string">
+            <column name="toPlace" length="45" />
         </property>
         <property name="startingPlace" type="java.lang.Integer">
             <column name="startingPlace" />
@@ -23,17 +23,17 @@
         <property name="price" type="java.lang.Integer">
             <column name="price" />
         </property>
-        <set name="throughs" table="through" inverse="true" lazy="true" fetch="select">
+        <set name="throughs" table="through" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="idTrack" not-null="true" />
             </key>
-            <one-to-many class="HiberPkg.Through" />
+            <one-to-many class="com.mgr.pickMeCar.db.model.Through" />
         </set>
-        <set name="userTracks" table="user_track" inverse="true" lazy="true" fetch="select">
+        <set name="userTracks" table="user_track" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="idTrack" not-null="true" />
             </key>
-            <one-to-many class="HiberPkg.UserTrack" />
+            <one-to-many class="com.mgr.pickMeCar.db.model.UserTrack" />
         </set>
     </class>
 </hibernate-mapping>

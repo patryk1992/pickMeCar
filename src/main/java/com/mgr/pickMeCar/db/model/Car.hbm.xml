@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2016-03-07 13:22:21 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="HiberPkg.Car" table="car" catalog="drive_db">
+    <class name="com.mgr.pickMeCar.db.model.Car" table="car" catalog="drive_db">
         <id name="id" type="java.lang.Integer">
             <column name="id" />
             <generator class="identity" />
@@ -24,7 +24,7 @@
             <key>
                 <column name="idCar" not-null="true" />
             </key>
-            <one-to-many class="HiberPkg.UserCar" />
+            <one-to-many class="com.mgr.pickMeCar.db.model.UserCar" />
         </set>
     </class>
 </hibernate-mapping>

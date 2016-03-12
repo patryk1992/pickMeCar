@@ -3,15 +3,15 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2016-03-07 13:22:21 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="HiberPkg.UserTrack" table="user_track" catalog="drive_db">
+    <class name="com.mgr.pickMeCar.db.model.UserTrack" table="user_track" catalog="drive_db">
         <id name="id" type="int">
             <column name="id" />
             <generator class="assigned" />
         </id>
-        <many-to-one name="track" class="HiberPkg.Track" fetch="select">
+        <many-to-one name="track" class="com.mgr.pickMeCar.db.model.Track" fetch="select">
             <column name="idTrack" not-null="true" />
         </many-to-one>
-        <many-to-one name="user" class="HiberPkg.User" fetch="select">
+        <many-to-one name="user" class="com.mgr.pickMeCar.db.model.User" fetch="select">
             <column name="idUser" not-null="true" />
         </many-to-one>
     </class>

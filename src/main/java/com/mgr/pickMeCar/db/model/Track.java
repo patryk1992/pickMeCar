@@ -10,8 +10,8 @@ import java.util.Set;
 public class Track implements java.io.Serializable {
 
 	private Integer id;
-	private String from;
-	private String to;
+	private String fromPlace;
+	private String toPlace;
 	private Integer startingPlace;
 	private String startingTime;
 	private Integer price;
@@ -21,10 +21,10 @@ public class Track implements java.io.Serializable {
 	public Track() {
 	}
 
-	public Track(String from, String to, Integer startingPlace, String startingTime, Integer price, Set throughs,
+	public Track(String fromPlace, String toPlace, Integer startingPlace, String startingTime, Integer price, Set throughs,
 			Set userTracks) {
-		this.from = from;
-		this.to = to;
+		this.fromPlace = fromPlace;
+		this.toPlace = toPlace;
 		this.startingPlace = startingPlace;
 		this.startingTime = startingTime;
 		this.price = price;
@@ -38,22 +38,22 @@ public class Track implements java.io.Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}	
+
+	public String getFromPlace() {
+		return fromPlace;
 	}
 
-	public String getFrom() {
-		return this.from;
+	public void setFromPlace(String fromPlace) {
+		this.fromPlace = fromPlace;
 	}
 
-	public void setFrom(String from) {
-		this.from = from;
+	public String getToPlace() {
+		return toPlace;
 	}
 
-	public String getTo() {
-		return this.to;
-	}
-
-	public void setTo(String to) {
-		this.to = to;
+	public void setToPlace(String toPlace) {
+		this.toPlace = toPlace;
 	}
 
 	public Integer getStartingPlace() {
