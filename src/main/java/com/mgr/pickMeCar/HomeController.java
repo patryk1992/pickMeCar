@@ -5,8 +5,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,13 +26,10 @@ import com.mgr.pickMeCar.db.model.User;
 @Controller
 public class HomeController {
 
-//	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	@Autowired
 	private TokenDAO tokenDao;
-	@Autowired
-	private TrackDAO trackDao;
-	@Autowired
-	private UserDAO userDao;
+	
 
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -48,7 +45,7 @@ public class HomeController {
 
 		//model.addAttribute("serverTime", formattedDate);
 		List<Token> listUsers = tokenDao.list();
-//		logger.info("Welcome list"+ listUsers.toString());
+		logger.info("Welcome list"+ listUsers.toString());
 		Token token = new Token("new1234", new Date(),  new Date());
 		token.setId(1);
 //		userDao.saveOrUpdate(token);

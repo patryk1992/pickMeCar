@@ -16,20 +16,20 @@ import com.mgr.pickMeCar.db.model.User;
 
 @RestController
 public class LoginController {
-	@Autowired
-	private UserDAO userDao;
-	 @RequestMapping(value = "/rest-api/login",method = RequestMethod.POST)
-	    public ResponseEntity<Void> login(@RequestBody User user) {
-	        System.out.println("Login User " + user.getName());
-	 
-//	        if (UserCarDAO.isUserExist(user)) {
-//	            System.out.println("A User with name " + user.getName() + " already exist");
-//	            return new ResponseEntity<Void>(HttpStatus.CONFLICT);
-//	        }
+//	@Autowired
+//	private UserDAO userDao;
+//	 @RequestMapping(value = "/rest-api/login",method = RequestMethod.POST)
+//	    public ResponseEntity<Void> login(@RequestBody User user) {
+//	        System.out.println("Login User " + user.getName());
 //	 
-//	        UserCarDAO.saveUser(user);
-//	 
-	       
-	        return new ResponseEntity<Void>( HttpStatus.CREATED);
-	    }
+////	        if (UserCarDAO.isUserExist(user)) {
+////	            System.out.println("A User with name " + user.getName() + " already exist");
+////	            return new ResponseEntity<Void>(HttpStatus.CONFLICT);
+////	        }
+////	 
+////	        UserCarDAO.saveUser(user);
+////	 
+//	       
+//	        return new ResponseEntity<Void>( HttpStatus.CREATED);
+//	    }
 }

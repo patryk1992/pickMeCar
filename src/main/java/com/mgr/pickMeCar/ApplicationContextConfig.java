@@ -15,8 +15,11 @@ import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import com.mgr.pickMeCar.db.dao.TokenDAO;
+import com.mgr.pickMeCar.db.dao.TokenDAOImpl;
 import com.mgr.pickMeCar.db.dao.UserDAO;
 import com.mgr.pickMeCar.db.dao.UserDAOImpl;
+import com.mgr.pickMeCar.db.model.Token;
 import com.mgr.pickMeCar.db.model.User;
 
 @Configuration
@@ -46,7 +49,8 @@ public class ApplicationContextConfig {
 	@Bean(name = "sessionFactory")
 	public SessionFactory getSessionFactory(DataSource dataSource) {
 		LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
-		sessionBuilder.addAnnotatedClasses(User.class);
+		sessionBuilder.addAnnotatedClasses(Token.class);
+//		sessionBuilder.scanPackages("com.mgr.pickMeCar.db.model");
 		return sessionBuilder.buildSessionFactory();
 	}
 	
@@ -66,10 +70,15 @@ public class ApplicationContextConfig {
 	 
 	    return transactionManager;
 	}
+//	@Autowired
+//	@Bean(name = "userDao")
+//	public UserDAO getUserDao(SessionFactory sessionFactory) {
+//	    return new UserDAOImpl(sessionFactory);
+//	}
 	@Autowired
-	@Bean(name = "userDao")
-	public UserDAO getUserDao(SessionFactory sessionFactory) {
-	    return new UserDAOImpl(sessionFactory);
+	@Bean(name = "tokenDao")
+	public TokenDAO getTokenDao(SessionFactory sessionFactory) {
+	    return new TokenDAOImpl(sessionFactory);
 	}
 
 }

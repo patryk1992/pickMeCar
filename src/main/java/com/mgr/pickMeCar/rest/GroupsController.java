@@ -27,15 +27,15 @@ import com.mgr.pickMeCar.db.model.User;
 @RestController
 
 public class GroupsController {
-	@Autowired
-	private GroupsDAO groupsDao;
-	 @RequestMapping(value = "/rest-api/groups",method = RequestMethod.GET,produces = "application/json",headers="Accept=*/*")
-	    public ResponseEntity<List<Groups>> groups() {
-			
-			List<Groups> ligroups =groupsDao.list();
-			if(ligroups.isEmpty()){
-	            return new ResponseEntity<List<Groups>>(HttpStatus.NO_CONTENT);//You many decide to return HttpStatus.NOT_FOUND
-	        }
-	        return new ResponseEntity <List<Groups>>(ligroups, HttpStatus.OK);
-	 }
+//	@Autowired
+//	private GroupsDAO groupsDao;
+//	 @RequestMapping(value = "/rest-api/groups",method = RequestMethod.GET,produces = "application/json",headers="Accept=*/*")
+//	    public ResponseEntity<List<Groups>> groups() {
+//			
+//			List<Groups> ligroups =groupsDao.list();
+//			if(ligroups.isEmpty()){
+//	            return new ResponseEntity<List<Groups>>(HttpStatus.NO_CONTENT);//You many decide to return HttpStatus.NOT_FOUND
+//	        }
+//	        return new ResponseEntity <List<Groups>>(ligroups, HttpStatus.OK);
+//	 }
 }
