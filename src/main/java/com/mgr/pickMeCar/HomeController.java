@@ -36,7 +36,7 @@ public class HomeController {
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-//		logger.info("Welcome home! The client locale is {}.", locale);
+		logger.info("Welcome home! The client locale is {}.", locale);
 
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
@@ -46,9 +46,9 @@ public class HomeController {
 		//model.addAttribute("serverTime", formattedDate);
 		List<Token> listUsers = tokenDao.list();
 		logger.info("Welcome list"+ listUsers.toString());
-		Token token = new Token("new1234", new Date(),  new Date());
-		token.setId(1);
-//		userDao.saveOrUpdate(token);
+		Token token = new Token("new6", new Date(),  new Date());
+//		token.setId(1);
+//		tokenDao.saveOrUpdate(token);
 //		logger.info("Welcome list"+ userDao.get(1).getToken());
 //		userDao.delete(2);
 //		 Track nTrack = new Track("sdg","dsg",0,"sd",4, null, null);

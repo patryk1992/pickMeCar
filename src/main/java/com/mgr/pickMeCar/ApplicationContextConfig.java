@@ -15,10 +15,30 @@ import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import com.mgr.pickMeCar.db.dao.CarDAO;
+import com.mgr.pickMeCar.db.dao.CarDAOImpl;
+import com.mgr.pickMeCar.db.dao.CityDAO;
+import com.mgr.pickMeCar.db.dao.CityDAOImpl;
+import com.mgr.pickMeCar.db.dao.GroupsDAO;
+import com.mgr.pickMeCar.db.dao.GroupsDAOImpl;
+import com.mgr.pickMeCar.db.dao.MarkDAO;
+import com.mgr.pickMeCar.db.dao.MarkDAOImpl;
+import com.mgr.pickMeCar.db.dao.ThroughDAO;
+import com.mgr.pickMeCar.db.dao.ThroughDAOImpl;
 import com.mgr.pickMeCar.db.dao.TokenDAO;
 import com.mgr.pickMeCar.db.dao.TokenDAOImpl;
+import com.mgr.pickMeCar.db.dao.TrackDAO;
+import com.mgr.pickMeCar.db.dao.TrackDAOImpl;
+import com.mgr.pickMeCar.db.dao.UserCarDAO;
+import com.mgr.pickMeCar.db.dao.UserCarDAOImpl;
 import com.mgr.pickMeCar.db.dao.UserDAO;
 import com.mgr.pickMeCar.db.dao.UserDAOImpl;
+import com.mgr.pickMeCar.db.dao.UserGroupDAO;
+import com.mgr.pickMeCar.db.dao.UserGroupDAOImpl;
+import com.mgr.pickMeCar.db.dao.UserTrackDAO;
+import com.mgr.pickMeCar.db.dao.UserTrackDAOImpl;
+import com.mgr.pickMeCar.db.model.Groups;
+import com.mgr.pickMeCar.db.model.Mark;
 import com.mgr.pickMeCar.db.model.Token;
 import com.mgr.pickMeCar.db.model.User;
 
@@ -49,8 +69,8 @@ public class ApplicationContextConfig {
 	@Bean(name = "sessionFactory")
 	public SessionFactory getSessionFactory(DataSource dataSource) {
 		LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
-		sessionBuilder.addAnnotatedClasses(Token.class);
-//		sessionBuilder.scanPackages("com.mgr.pickMeCar.db.model");
+//		sessionBuilder.addAnnotatedClasses(Token.class,Groups.class);
+		sessionBuilder.scanPackages("com.mgr.pickMeCar.db.model");
 		return sessionBuilder.buildSessionFactory();
 	}
 	
@@ -70,15 +90,60 @@ public class ApplicationContextConfig {
 	 
 	    return transactionManager;
 	}
-//	@Autowired
-//	@Bean(name = "userDao")
-//	public UserDAO getUserDao(SessionFactory sessionFactory) {
-//	    return new UserDAOImpl(sessionFactory);
-//	}
+	@Autowired
+	@Bean(name = "userDao")
+	public UserDAO getUserDao(SessionFactory sessionFactory) {
+	    return new UserDAOImpl(sessionFactory);
+	}
 	@Autowired
 	@Bean(name = "tokenDao")
 	public TokenDAO getTokenDao(SessionFactory sessionFactory) {
 	    return new TokenDAOImpl(sessionFactory);
+	}
+	@Autowired
+	@Bean(name = "carDao")
+	public CarDAO getCarDao(SessionFactory sessionFactory) {
+	    return new CarDAOImpl(sessionFactory);
+	}
+	@Autowired
+	@Bean(name = "cityDao")
+	public CityDAO getCityDao(SessionFactory sessionFactory) {
+	    return new CityDAOImpl(sessionFactory);
+	}
+	@Autowired
+	@Bean(name = "GroupsDao")
+	public GroupsDAO getGroupsDao(SessionFactory sessionFactory) {
+	    return new GroupsDAOImpl(sessionFactory);
+	}
+	@Autowired
+	@Bean(name = "markDao")
+	public MarkDAO getMarkDao(SessionFactory sessionFactory) {
+	    return new MarkDAOImpl(sessionFactory);
+	}
+	@Autowired
+	@Bean(name = "throughDao")
+	public ThroughDAO getThroughDao(SessionFactory sessionFactory) {
+	    return new ThroughDAOImpl(sessionFactory);
+	}	
+	@Autowired
+	@Bean(name = "trackDao")
+	public TrackDAO getTrackDao(SessionFactory sessionFactory) {
+	    return new TrackDAOImpl(sessionFactory);
+	}
+	@Autowired
+	@Bean(name = "userCarDao")
+	public UserCarDAO getUserCarDao(SessionFactory sessionFactory) {
+	    return new UserCarDAOImpl(sessionFactory);
+	}
+	@Autowired
+	@Bean(name = "userGroupDao")
+	public UserGroupDAO getUserGroupDao(SessionFactory sessionFactory) {
+	    return new UserGroupDAOImpl(sessionFactory);
+	}
+	@Autowired
+	@Bean(name = "userTrackDao")
+	public UserTrackDAO getUserTrackDao(SessionFactory sessionFactory) {
+	    return new UserTrackDAOImpl(sessionFactory);
 	}
 
 }
