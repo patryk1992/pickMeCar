@@ -51,7 +51,7 @@ public class Through implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@JsonBackReference
+	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idCity", nullable = false)
 	public City getCity() {
@@ -62,7 +62,7 @@ public class Through implements java.io.Serializable {
 		this.city = city;
 	}
 
-	@JsonBackReference
+	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idTrack", nullable = false)
 	public Track getTrack() {

@@ -64,7 +64,7 @@ public class User implements java.io.Serializable {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	@JsonBackReference
+	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "city")
 	public City getCity() {
@@ -101,7 +101,7 @@ public class User implements java.io.Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	@JsonManagedReference 
+
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
 	public Set<UserGroup> getUserGroups() {
 		return this.userGroups;
@@ -110,7 +110,7 @@ public class User implements java.io.Serializable {
 	public void setUserGroups(Set<UserGroup> userGroups) {
 		this.userGroups = userGroups;
 	}
-	@JsonManagedReference 
+ 
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user" )
 	public Set<Mark> getMarks() {
 		return this.marks;
@@ -119,7 +119,7 @@ public class User implements java.io.Serializable {
 	public void setMarks(Set<Mark> marks) {
 		this.marks = marks;
 	}
-	@JsonManagedReference 
+
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
 	public Set<UserTrack> getUserTracks() {
 		return this.userTracks;
@@ -128,7 +128,7 @@ public class User implements java.io.Serializable {
 	public void setUserTracks(Set<UserTrack> userTracks) {
 		this.userTracks = userTracks;
 	}
-	@JsonManagedReference 
+
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
 	public Set<UserCar> getUserCars() {
 		return this.userCars;

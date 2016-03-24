@@ -64,7 +64,7 @@ public class Groups implements java.io.Serializable {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	@JsonManagedReference
+	
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "groups")
 	public Set<UserGroup> getUserGroups() {
 		return this.userGroups;

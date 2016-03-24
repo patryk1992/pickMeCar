@@ -41,7 +41,7 @@ public class UserTrack implements java.io.Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
-	@JsonBackReference
+	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idTrack", nullable = false)
 	public Track getTrack() {
@@ -51,7 +51,7 @@ public class UserTrack implements java.io.Serializable {
 	public void setTrack(Track track) {
 		this.track = track;
 	}
-	@JsonBackReference
+	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idUser", nullable = false)
 	public User getUser() {

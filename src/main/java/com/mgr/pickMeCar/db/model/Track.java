@@ -100,7 +100,7 @@ public class Track implements java.io.Serializable {
 	public void setPrice(Integer price) {
 		this.price = price;
 	}
-	@JsonManagedReference
+	
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "track")
 	public Set<Through> getThroughs() {
 		return this.throughs;
@@ -109,7 +109,7 @@ public class Track implements java.io.Serializable {
 	public void setThroughs(Set<Through> throughs) {
 		this.throughs = throughs;
 	}
-	@JsonManagedReference
+	
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "track")
 	public Set<UserTrack> getUserTracks() {
 		return this.userTracks;

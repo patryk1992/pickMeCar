@@ -10,26 +10,29 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.mgr.pickMeCar.db.dao.TokenDAO;
-import com.mgr.pickMeCar.db.dao.UserDAO;
 import com.mgr.pickMeCar.db.model.User;
+import com.mgr.pickMeCar.db.repository.UserRepository;
 
 @RestController
 public class LoginController {
-//	@Autowired
-//	private UserDAO userDao;
-//	 @RequestMapping(value = "/rest-api/login",method = RequestMethod.POST)
-//	    public ResponseEntity<Void> login(@RequestBody User user) {
-//	        System.out.println("Login User " + user.getName());
-//	 
-////	        if (UserCarDAO.isUserExist(user)) {
-////	            System.out.println("A User with name " + user.getName() + " already exist");
-////	            return new ResponseEntity<Void>(HttpStatus.CONFLICT);
-////	        }
-////	 
-////	        UserCarDAO.saveUser(user);
-////	 
-//	       
-//	        return new ResponseEntity<Void>( HttpStatus.CREATED);
-//	    }
+	@Autowired
+	private UserRepository userRepository;
+
+	@RequestMapping(value = "rest-api/login", method = RequestMethod.POST)
+	public ResponseEntity<Void> login(@RequestBody User user) {
+		System.out.println("Login User " + user.getName());
+		System.out.println("Login User " + userRepository.findAll());
+		User fuser = userRepository.findByName(user.getName()).size() > 0
+				? userRepository.findByName(user.getName()).get(0) : null;
+
+		if (fuser != null) {
+			if(fuser.getPassword().equals(user.getPassword())){
+				return new ResponseEntity<Void>(HttpStatus.OK);
+			}
+		}
+
+		// UserCarDAO.saveUser(user);
+
+		return new ResponseEntity<Void>(HttpStatus.UNAUTHORIZED);
+	}
 }

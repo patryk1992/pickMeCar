@@ -83,7 +83,7 @@ public class City implements java.io.Serializable {
 	public void setLongitude(double longitude) {
 		this.longitude = longitude;
 	}
-	@JsonManagedReference
+	
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "city")
 	public Set<User> getUsers() {
 		return this.users;
@@ -92,7 +92,7 @@ public class City implements java.io.Serializable {
 	public void setUsers(Set<User> users) {
 		this.users = users;
 	}
-	@JsonManagedReference
+	
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "city")
 	public Set<Through> getThroughs() {
 		return this.throughs;

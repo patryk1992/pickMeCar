@@ -1,3 +1,0 @@
-+eager, lazy , model rest
-
-+@JsonManagedReference , http://stackoverflow.com/questions/22183160/using-jackson2-with-spring-4-0-mvc-rest-hibernate

@@ -43,7 +43,7 @@ public class UserGroup implements java.io.Serializable {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	@JsonBackReference
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idUser", nullable = false)
 	public User getUser() {
@@ -53,7 +53,7 @@ public class UserGroup implements java.io.Serializable {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	@JsonBackReference
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idGroup", nullable = false)
 	public Groups getGroups() {

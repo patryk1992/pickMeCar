@@ -91,7 +91,7 @@ public class Car implements java.io.Serializable {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	@JsonManagedReference
+	
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "car")
 	public Set<UserCar> getUserCars() {
 		return this.userCars;

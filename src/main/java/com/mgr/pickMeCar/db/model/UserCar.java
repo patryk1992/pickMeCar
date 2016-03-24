@@ -54,7 +54,7 @@ public class UserCar implements java.io.Serializable {
 		this.car = car;
 	}
 
-	@JsonBackReference
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idUser", nullable = false)
 	public User getUser() {

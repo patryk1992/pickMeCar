@@ -52,7 +52,7 @@ public class Mark implements java.io.Serializable {
 		this.id = id;
 	}
 	
-	@JsonBackReference
+	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idUser", nullable = false)
 	public User getUser() {
