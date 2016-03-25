@@ -40,5 +40,10 @@ public class HomeController {
 	        model.addAttribute("name", name);
 	        return "index";
 	    }
+	 @RequestMapping("/register")
+	    public String register(@RequestParam(value="name", required=false, defaultValue="World") String name, Model model) {
+	        model.addAttribute("name", name);
+	        return "register";
+	    }
 
 }
