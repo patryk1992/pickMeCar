@@ -63,7 +63,7 @@
 	<!-- Page Content -->
 	<div class="container">
 
-		 <form class="form-signin">
+		 <form class="form-signin" >
         <h2 class="form-signin-heading">Register</h2>
         <label for="inputLogin" class="sr-only">Login</label>
         <input  id="inputLogin" class="form-control" placeholder="Login" />
@@ -80,7 +80,13 @@
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit" >Register</button>
       </form>
-
+		<li><a href="#" th:href="@{/users}">users</a></li>
+		   <tr th:each="user : ${users}">             
+                <td th:text="${user.name}">Product Id</td>
+                <td th:text="${user.email}">descirption</td>
+                <td th:text="${user.password}">price</td>
+               
+            </tr>
 
 	</div>
 	<!-- /.container -->
