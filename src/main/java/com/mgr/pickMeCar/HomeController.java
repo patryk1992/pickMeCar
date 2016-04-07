@@ -28,35 +28,40 @@ public class HomeController {
 	private UserRepository userRepository;
 
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
 
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	 @RequestMapping("/greeting")
-	    public String greeting(@RequestParam(value="name", required=false, defaultValue="World") String name, Model model) {
-	        model.addAttribute("name", name);
-	        return "greeting";
-	    }
-	 @RequestMapping("/index")
-	    public String index(@RequestParam(value="name", required=false, defaultValue="World") String name, Model model) {
-	        model.addAttribute("name", name);
-	        return "index";
-	    }
-	 @RequestMapping("/register")
-	    public String register(@RequestParam(value="name", required=false, defaultValue="World") String name, Model model) {
-	        model.addAttribute("name", name);
-	        return "register";
-	    }
-	 @RequestMapping(value = "/register", method = RequestMethod.POST)
-	 public String saveUser(User product){
-//	     UserRepository.saveProduct(product);
-	     return "redirect:/greeting/" ;
-	 }
-	  @RequestMapping(value = "/users", method = RequestMethod.GET)
-	    public String list(Model model){
-	        model.addAttribute("users",userRepository.findAll());
-	        return "register";
-	    }
+	@RequestMapping("/greeting")
+	public String greeting(@RequestParam(value = "name", required = false, defaultValue = "World") String name,
+			Model model) {
+		model.addAttribute("name", name);
+		return "greeting";
+	}
+
+	@RequestMapping("/index")
+	public String index(@RequestParam(value = "name", required = false, defaultValue = "World") String name,
+			Model model) {
+		model.addAttribute("name", name);
+		return "index";
+	}
+
+	@RequestMapping("/user/new")
+	public String newUser(Model model) {
+		model.addAttribute("user", new User());		
+		return "register";
+	}
+
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public String saveUser(User user) {
+		// UserRepository.saveProduct(product);
+		return "register";
+	}
+
+	@RequestMapping(value = "/users", method = RequestMethod.GET)
+	public String list(Model model) {
+		model.addAttribute("users", userRepository.findAll());
+		return "register";
+	}
 
 }
