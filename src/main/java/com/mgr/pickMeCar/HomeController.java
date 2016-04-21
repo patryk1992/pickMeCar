@@ -46,22 +46,6 @@ public class HomeController {
 		return "index";
 	}
 
-	@RequestMapping("/user/new")
-	public String newUser(Model model) {
-		model.addAttribute("user", new User());		
-		return "register";
-	}
-
-	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String saveUser(User user) {
-		// UserRepository.saveProduct(product);
-		return "register";
-	}
-
-	@RequestMapping(value = "/users", method = RequestMethod.GET)
-	public String list(Model model) {
-		model.addAttribute("users", userRepository.findAll());
-		return "register";
-	}
+	
 
 }
