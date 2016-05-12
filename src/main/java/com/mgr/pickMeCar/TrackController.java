@@ -10,33 +10,34 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.mgr.pickMeCar.db.model.Track;
 import com.mgr.pickMeCar.db.model.User;
+import com.mgr.pickMeCar.service.TrackService;
 import com.mgr.pickMeCar.service.UserService;
 
 /**
  * Handles requests for the application home page.
  */
 @Controller
-public class RegisterController {
+public class TrackController {
 	@Autowired
-	private UserService userService;
+	private TrackService trackService;
 
-	private static final Logger logger = LoggerFactory.getLogger(RegisterController.class);
+	private static final Logger logger = LoggerFactory.getLogger(TrackController.class);
 
-	@RequestMapping("/register")
-	public String newUser(Model model) {
-		model.addAttribute("user", new User());
-		return "register";
+	@RequestMapping("/addtrack")
+	public String newTrack(Model model) {
+		model.addAttribute("track", new Track());
+		return "addTrack";
 	}
 
-	@RequestMapping(value = "/register/new", method = RequestMethod.POST)
-	public String saveUser(User user) {
-		userService.saveOrUpdate(user);
+	@RequestMapping(value = "/addtrack/new", method = RequestMethod.POST)
+	public String saveTrack(Track track) {
+		trackService.saveOrUpdate(track);
 		return "greeting";
 	}
 
-	@RequestMapping(value = "/users", method = RequestMethod.GET)
+	@RequestMapping(value = "/tracks", method = RequestMethod.GET)
 	public String list(Model model) {
-		model.addAttribute("users", userService.list());
+		model.addAttribute("users", trackService.list());
 		return "register";
 	}
 
