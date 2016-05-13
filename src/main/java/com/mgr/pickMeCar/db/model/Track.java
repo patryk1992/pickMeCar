@@ -24,23 +24,23 @@ public class Track implements java.io.Serializable {
 	private Integer id;
 	private String fromPlace;
 	private String toPlace;
-	private Integer startingPlace;
+	private String startingPlace;
 	private String startingTime;
 	private Integer price;
-	private Set<Through> throughs = new HashSet<Through>(0);
+	
 	private Set<UserTrack> userTracks = new HashSet<UserTrack>(0);
 
 	public Track() {
 	}
 
-	public Track(String fromPlace, String toPlace, Integer startingPlace, String startingTime, Integer price,
-			Set<Through> throughs, Set<UserTrack> userTracks) {
+	public Track(String fromPlace, String toPlace, String startingPlace, String startingTime, Integer price,
+			 Set<UserTrack> userTracks) {
 		this.fromPlace = fromPlace;
 		this.toPlace = toPlace;
 		this.startingPlace = startingPlace;
 		this.startingTime = startingTime;
 		this.price = price;
-		this.throughs = throughs;
+		
 		this.userTracks = userTracks;
 	}
 
@@ -75,11 +75,11 @@ public class Track implements java.io.Serializable {
 	}
 
 	@Column(name = "startingPlace")
-	public Integer getStartingPlace() {
+	public String getStartingPlace() {
 		return this.startingPlace;
 	}
 
-	public void setStartingPlace(Integer startingPlace) {
+	public void setStartingPlace(String startingPlace) {
 		this.startingPlace = startingPlace;
 	}
 
@@ -101,14 +101,7 @@ public class Track implements java.io.Serializable {
 		this.price = price;
 	}
 	
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "track")
-	public Set<Through> getThroughs() {
-		return this.throughs;
-	}
-
-	public void setThroughs(Set<Through> throughs) {
-		this.throughs = throughs;
-	}
+	
 	
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "track")
 	public Set<UserTrack> getUserTracks() {

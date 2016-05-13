@@ -25,7 +25,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 public class User implements java.io.Serializable {
 
 	private Integer id;
-	private City city;
+	
 	private String name;
 	private String email;
 	private String password;
@@ -41,9 +41,9 @@ public class User implements java.io.Serializable {
 		this.password = password;
 	}
 
-	public User(City city, String name, String email, String password, Set<UserGroup> userGroups, Set<Mark> marks,
+	public User( String name, String email, String password, Set<UserGroup> userGroups, Set<Mark> marks,
 			Set<UserTrack> userTracks, Set<UserCar> userCars) {
-		this.city = city;
+		
 		this.name = name;
 		this.email = email;
 		this.password = password;
@@ -65,15 +65,7 @@ public class User implements java.io.Serializable {
 		this.id = id;
 	}
 	
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "city")
-	public City getCity() {
-		return this.city;
-	}
-
-	public void setCity(City city) {
-		this.city = city;
-	}
+	
 
 	@Column(name = "name", length = 40)
 	public String getName() {

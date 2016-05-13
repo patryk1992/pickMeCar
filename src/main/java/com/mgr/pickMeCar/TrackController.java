@@ -40,5 +40,11 @@ public class TrackController {
 		model.addAttribute("users", trackService.list());
 		return "register";
 	}
+	@RequestMapping(value = "/searchTrack", method = RequestMethod.GET)
+	public String searchTrack(Model model) {
+		model.addAttribute("track", new Track());
+		model.addAttribute("users", trackService.list());
+		return "searchTrack";
+	}
 
 }
