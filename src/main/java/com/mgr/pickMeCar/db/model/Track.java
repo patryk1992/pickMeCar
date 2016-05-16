@@ -25,6 +25,7 @@ public class Track implements java.io.Serializable {
 	private String fromPlace;
 	private String toPlace;
 	private String startingPlace;
+	private String startingDate;
 	private String startingTime;
 	private Integer price;
 	
@@ -33,16 +34,18 @@ public class Track implements java.io.Serializable {
 	public Track() {
 	}
 
-	public Track(String fromPlace, String toPlace, String startingPlace, String startingTime, Integer price,
+	public Track(String fromPlace, String toPlace, String startingPlace,String startingDate, String startingTime, Integer price,
 			 Set<UserTrack> userTracks) {
 		this.fromPlace = fromPlace;
 		this.toPlace = toPlace;
 		this.startingPlace = startingPlace;
 		this.startingTime = startingTime;
 		this.price = price;
-		
+		this.startingDate = startingDate;
 		this.userTracks = userTracks;
 	}
+
+	
 
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
@@ -73,6 +76,7 @@ public class Track implements java.io.Serializable {
 	public void setToPlace(String toPlace) {
 		this.toPlace = toPlace;
 	}
+	
 
 	@Column(name = "startingPlace")
 	public String getStartingPlace() {
@@ -82,7 +86,14 @@ public class Track implements java.io.Serializable {
 	public void setStartingPlace(String startingPlace) {
 		this.startingPlace = startingPlace;
 	}
+	@Column(name = "startingDate")
+	public String getStartingDate() {
+		return startingDate;
+	}
 
+	public void setStartingDate(String startingDate) {
+		this.startingDate = startingDate;
+	}
 	@Column(name = "startingTime", length = 45)
 	public String getStartingTime() {
 		return this.startingTime;

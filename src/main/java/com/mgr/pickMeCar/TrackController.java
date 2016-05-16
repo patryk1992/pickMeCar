@@ -1,10 +1,13 @@
 package com.mgr.pickMeCar;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -43,8 +46,25 @@ public class TrackController {
 	@RequestMapping(value = "/searchTrack", method = RequestMethod.GET)
 	public String searchTrack(Model model) {
 		model.addAttribute("track", new Track());
-		model.addAttribute("users", trackService.list());
+		List<Track> track = trackService.list();
+//		model.addAttribute("trackList", trackService.list());
 		return "searchTrack";
+	}
+	@RequestMapping(value = "/searchTrackTable/fromPlace={fromPlace}/toPlace={toPlace}/startingDate={startingDate}", method = RequestMethod.GET)
+	public String searchTrackParam(Model model, @PathVariable("fromPlace") String fromPlace,@PathVariable("toPlace") String toPlace,@PathVariable("startingDate") String startingDate) {
+//		model.addAttribute("track", new Track());
+		List<Track> track = trackService.list();
+		model.addAttribute("trackList", trackService.list());
+	
+		return "searchTrackResultTable";
+	}
+	@RequestMapping(value = "/searchTrackTable", method = RequestMethod.GET)
+	public String searchTrackAll(Model model) {
+//		model.addAttribute("track", new Track());
+		List<Track> track = trackService.list();
+		model.addAttribute("trackList", trackService.list());
+	
+		return "searchTrackResultTable";
 	}
 
 }

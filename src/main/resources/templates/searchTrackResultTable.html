@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+</head>
+<body>
+			
+				<div th:fragment="resultsList" >
+					<table class="table table-stripped">
+						<tr>
+							<th>From Place</th>
+							<th>To Place</th>
+							<th>Starting date</th>
+							<th>Starting time</th>
+							<th>Price</th>
+						</tr>
+						<tr th:each="trackEl : ${trackList}" >
+							<td th:text="${trackEl.fromPlace}"></td>
+							<td th:text="${trackEl.toPlace}"></td>
+							<td th:text="${trackEl.startingDate}"></td>
+							<td th:text="${trackEl.startingTime}"></td>
+							<td th:text="${trackEl.price}"></td>
+						</tr>
+					</table>
+				</div>
+
+
+</body>
+
+</html>
