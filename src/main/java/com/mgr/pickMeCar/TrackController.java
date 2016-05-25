@@ -1,5 +1,6 @@
 package com.mgr.pickMeCar;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -53,8 +54,23 @@ public class TrackController {
 	@RequestMapping(value = "/searchTrackTable/fromPlace={fromPlace}/toPlace={toPlace}/startingDate={startingDate}", method = RequestMethod.GET)
 	public String searchTrackParam(Model model, @PathVariable("fromPlace") String fromPlace,@PathVariable("toPlace") String toPlace,@PathVariable("startingDate") String startingDate) {
 //		model.addAttribute("track", new Track());
-		List<Track> track = trackService.list();
-		model.addAttribute("trackList", trackService.list());
+		List<Track> trackList = null;
+		if(!fromPlace.equals("") && !toPlace.equals("") && !startingDate.equals("")){
+			trackList = trackService.findByFromPlaceAndToPlaceAndStartingDate(fromPlace, toPlace, startingDate);
+		}else if(!fromPlace.equals("") && !toPlace.equals("") ){
+			trackList = trackService.findByFromPlaceAndToPlace(fromPlace, toPlace);
+		}else if(!fromPlace.equals("")  && !startingDate.equals("")){
+			trackList = trackService.findByFromPlaceAndStartingDate(fromPlace, startingDate);
+		}else if( !toPlace.equals("") && !startingDate.equals("")){
+			trackList = trackService.findByStartingDateAndToPlace(startingDate, toPlace);
+		}else if(!fromPlace.equals("") ){
+			trackList = trackService.findByFromPlace(fromPlace);
+		}else if(!toPlace.equals("") ){
+			trackList = trackService.findByToPlace(toPlace);
+		}else if(!startingDate.equals("")){
+			trackList = trackService.findByStartingDate(startingDate);
+		}
+		model.addAttribute("trackList", trackList);
 	
 		return "searchTrackResultTable";
 	}
@@ -66,5 +82,27 @@ public class TrackController {
 	
 		return "searchTrackResultTable";
 	}
-
+	@RequestMapping(value = "/myTrack", method = RequestMethod.GET)
+	public String myTrack(Model model) {
+//		model.addAttribute("track", new Track());
+		List<Track> track = trackService.list();
+		model.addAttribute("trackList", trackService.list());
+	
+		return "myTrack";
+	}
+	@RequestMapping(value = "/myTrack/delete/{id}", method = RequestMethod.GET)
+	public String delete(@PathVariable Integer id) {
+		trackService.delete(id);		
+		return "myTrack";
+	}
+	@RequestMapping(value = "/myTrack/edit/{id}", method = RequestMethod.GET)
+	public String edit(@PathVariable Integer id) {
+		trackService.delete(id);		
+		return "myTrack";
+	}
+	@RequestMapping(value = "/myTrack/editForm", method = RequestMethod.GET)
+	public String editForm(Model model) {
+				
+		return "myTrackEditForm";
+	}
 }

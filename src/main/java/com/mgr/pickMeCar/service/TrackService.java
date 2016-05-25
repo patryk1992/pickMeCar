@@ -13,4 +13,12 @@ public interface TrackService {
 	public Track saveOrUpdate(Track track);
 
 	public void delete(int id);
+	
+	List<Track> findByFromPlace(String fromPlace);
+	List<Track> findByToPlace(String toPlace);
+	List<Track> findByStartingDate(String startingDate);
+	List<Track> findByFromPlaceAndToPlace(String fromPlace,String toPlace);
+	List<Track> findByFromPlaceAndStartingDate(String fromPlace,String startingDate);
+	List<Track> findByStartingDateAndToPlace(String startingDate,String toPlace);
+	List<Track> findByFromPlaceAndToPlaceAndStartingDate(String fromPlace,String toPlace,String startingDate);
 }

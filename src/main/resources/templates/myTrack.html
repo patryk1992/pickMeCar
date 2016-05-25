@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+
+</head>
+
+<body>
+
+	<!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+
+	<!-- Page Content -->
+	<div class="container">
+
+		<div class="row">
+
+			<div class="col-md-3">
+				<div class="thumbnail">	
+					<div id="editBlockTrack" ></div>
+				</div>
+			</div>
+
+			<div class="col-md-9">
+
+				<div id="resultsBlockTrack" class="thumbnail">
+					<div>
+						<table class="table table-stripped">
+							<tr>
+								<th>Id</th>
+								<th>From Place</th>
+								<th>To Place</th>
+								<th>Starting date</th>
+								<th>Starting time</th>
+								<th>Price</th>
+								<th >Actions</th>
+							</tr>
+							<tr th:each="trackEl : ${trackList}">
+								<td th:text="${trackEl.id}"></td>
+								<td th:text="${trackEl.fromPlace}"></td>
+								<td th:text="${trackEl.toPlace}"></td>
+								<td th:text="${trackEl.startingDate}"></td>
+								<td th:text="${trackEl.startingTime}"></td>
+								<td th:text="${trackEl.price}"></td>
+								<td>
+									<a href="#" th:href="${'/myTrack/delete/' + trackEl.id}">del</a> 
+									<a href="#" onclick='editFormTrack()'>edit</a>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+
+</body>
+<script type="text/javascript">
+	function editFormTrack() {
+		var url = "/myTrack/editForm";
+
+// 		if ($('#from_place').val() != '' || $('#to_place').val() != '' || $('#starting_date').val() != '') {
+// 			url = url + '/fromPlace=' + $('#from_place').val() + '/toPlace='
+// 					+ $('#to_place').val() + '/startingDate='
+// 					+ $('#starting_date').val() ;
+// 		}
+
+		$("#editBlockTrack").load(url);
+	}
+</script>
+</html>
