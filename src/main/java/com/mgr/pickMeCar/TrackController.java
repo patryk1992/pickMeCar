@@ -79,6 +79,7 @@ public class TrackController {
 //		model.addAttribute("track", new Track());
 		List<Track> track = trackService.list();
 		model.addAttribute("trackList", trackService.list());
+		model.addAttribute("trackList", trackService.list());
 	
 		return "searchTrackResultTable";
 	}
@@ -87,7 +88,15 @@ public class TrackController {
 //		model.addAttribute("track", new Track());
 		List<Track> track = trackService.list();
 		model.addAttribute("trackList", trackService.list());
-	
+		model.addAttribute("track", trackService.list().get(0));
+		return "myTrack";
+	}
+	@RequestMapping(value = "/myTrack/{id}", method = RequestMethod.GET)
+	public String myTrack(Model model,@PathVariable Integer id) {
+//		model.addAttribute("track", new Track());
+		List<Track> track = trackService.list();		
+		model.addAttribute("track", trackService.list().get(0));
+		model.addAttribute("trackList", trackService.list());	
 		return "myTrack";
 	}
 	@RequestMapping(value = "/myTrack/delete/{id}", method = RequestMethod.GET)
@@ -96,9 +105,10 @@ public class TrackController {
 		return "myTrack";
 	}
 	@RequestMapping(value = "/myTrack/edit/{id}", method = RequestMethod.GET)
-	public String edit(@PathVariable Integer id) {
-		trackService.delete(id);		
-		return "myTrack";
+	public String edit(Model model,@PathVariable Integer id) {
+		model.addAttribute("track", trackService.list().get(0));
+		model.addAttribute("trackList", trackService.list());		
+		return "myTrackEditForm2";
 	}
 	@RequestMapping(value = "/myTrack/editForm", method = RequestMethod.GET)
 	public String editForm(Model model) {

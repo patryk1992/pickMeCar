@@ -13,14 +13,10 @@
 	<!-- Page Content -->
 	<div class="container">
 
-		<div class="row">
-
-			<div class="col-md-3">
-				<div class="thumbnail">	
-					<div id="editBlockTrack" ></div>
-				</div>
-			</div>
-
+		<div class="row">			
+				
+				
+			
 			<div class="col-md-9">
 
 				<div id="resultsBlockTrack" class="thumbnail">
@@ -44,7 +40,7 @@
 								<td th:text="${trackEl.price}"></td>
 								<td>
 									<a href="#" th:href="${'/myTrack/delete/' + trackEl.id}">del</a> 
-									<a href="#" onclick='editFormTrack()'>edit</a>
+									<a href="#" th:href="${'/myTrack/edit/' + trackEl.id}" >edit</a>
 								</td>
 							</tr>
 						</table>
@@ -60,7 +56,7 @@
 
 </body>
 <script type="text/javascript">
-	function editFormTrack() {
+	function editFormTrack(id) {
 		var url = "/myTrack/editForm";
 
 // 		if ($('#from_place').val() != '' || $('#to_place').val() != '' || $('#starting_date').val() != '') {
