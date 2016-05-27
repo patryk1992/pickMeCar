@@ -2,37 +2,64 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+
+ <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+
 </head>
+
 <body>
-		 <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+
+ <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
 
 	<!-- Page Content -->
 	<div class="container">
-					<div class="col-md-3">
-							 <form class="form-signin" th:object="${track}" th:action="@{/addtrack/new}" method="post" >
-						        <h2 class="form-signin-heading">Add track</h2>
-						        <label for="from_place" class="sr-only">from_place</label>
-						        <input  id="from_place" class="form-control" placeholder="from_place" th:field="*{fromPlace}"/>
-						        <label for="to_place" class="sr-only">to_place</label>
-						        <input id="to_place" class="form-control" placeholder="to_place" th:field="*{toPlace}"/>
-						        <label for="starting_date"  class="sr-only">starting_date</label>
-						        <input  id="starting_date"  type="date" class="form-control" placeholder="starting_date" th:field="*{startingDate}" />
-						        <label for="starting_time" class="sr-only">starting_time</label>
-						        <input  id="starting_time" type="time" class="form-control" placeholder="starting_time" th:field="*{startingTime}" />
-						        <label for="price" class="sr-only">price</label>
-						        <input  id="price" class="form-control" placeholder="price" th:field="*{price}" />
-						       
-						        <div class="checkbox">
-						          <label>
-						            <!-- <input type="checkbox" value="remember-me"> Remember me -->
-						          </label>
-						        </div>
-						        <button class="btn btn-lg btn-primary btn-block" type="submit" >Add</button>
-						      </form>
-					</div>
-				</div>
 
+		 <form class="form-signin" th:object="${track}" th:action="@{/myTrack/edit}" method="post" >
+        <h2 class="form-signin-heading">Edit track</h2>
+        <input style="visibility: hidden" id="id_track" class="form-control" placeholder="id_track" th:field="*{id}"/>
+        <label for="from_place" class="sr-only">from_place</label>
+        <input  id="from_place" class="form-control" placeholder="from_place" th:field="*{fromPlace}"/>
+        <label for="to_place" class="sr-only">to_place</label>
+        <input id="to_place" class="form-control" placeholder="to_place" th:field="*{toPlace}"/>
+        <label for="starting_date"  class="sr-only">starting_date</label>
+        <input  id="starting_date"  type="date" class="form-control" placeholder="starting_date" th:field="*{startingDate}" />
+        <label for="starting_time" class="sr-only">starting_time</label>
+        <input  id="starting_time" type="time" class="form-control" placeholder="starting_time" th:field="*{startingTime}" />
+        <label for="price" class="sr-only">price</label>
+        <input  id="price" class="form-control" placeholder="price" th:field="*{price}" />
+       
+        <div class="checkbox">
+          <label>
+            <!-- <input type="checkbox" value="remember-me"> Remember me -->
+          </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" >Edit</button>
+      </form>
+		<!-- <li><a href="#" th:href="@{/users}">users</a></li>
+		   <tr th:each="user : ${users}">             
+                <td th:text="${user.name}">Product Id</td>
+                <td th:text="${user.email}">descirption</td>
+                <td th:text="${user.password}">price</td>
+               
+            </tr> -->
+
+	</div>
+	<!-- /.container -->
+
+	<div class="container">
+
+		<hr />
+
+		<!-- Footer -->
+		<footer>
+			<div class="row">
+				<div class="col-lg-12">
+					
+				</div>
+			</div>
+		</footer>
+
+	</div>
 
 </body>
 

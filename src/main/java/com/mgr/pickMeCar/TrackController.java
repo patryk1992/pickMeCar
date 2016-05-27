@@ -97,18 +97,18 @@ public class TrackController {
 		List<Track> track = trackService.list();		
 		model.addAttribute("track", trackService.list().get(0));
 		model.addAttribute("trackList", trackService.list());	
-		return "myTrack";
+		return "myTrackEditForm";
 	}
 	@RequestMapping(value = "/myTrack/delete/{id}", method = RequestMethod.GET)
 	public String delete(@PathVariable Integer id) {
 		trackService.delete(id);		
 		return "myTrack";
 	}
-	@RequestMapping(value = "/myTrack/edit/{id}", method = RequestMethod.GET)
-	public String edit(Model model,@PathVariable Integer id) {
-		model.addAttribute("track", trackService.list().get(0));
-		model.addAttribute("trackList", trackService.list());		
-		return "myTrackEditForm2";
+	@RequestMapping(value = "/myTrack/edit", method = RequestMethod.POST)
+	public String edit(Model model,Track track) {
+		model.addAttribute("trackList", trackService.list());	
+		trackService.saveOrUpdate(track);
+		return "myTrack";
 	}
 	@RequestMapping(value = "/myTrack/editForm", method = RequestMethod.GET)
 	public String editForm(Model model) {
