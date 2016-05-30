@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+ <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+
+</head>
+
+<body>
+
+ <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+
+	<!-- Page Content -->
+	<div class="container">
+
+		 <form class="form-signin"  th:action="@{/login}" method="post" >
+        <h2 class="form-signin-heading">Login</h2>
+        
+        <label for="j_username" class="sr-only">Login</label>
+        <input name="username"  id="j_username" class="form-control" placeholder="Login" />       
+        <label for="j_password" class="sr-only">Password</label>
+        <input  name="password" type="password" id="j_password" class="form-control" placeholder="Password" />
+        
+        <button class="btn btn-lg btn-primary btn-block" type="submit" >Register</button>
+      </form>
+
+
+	</div>
+	<!-- /.container -->
+
+	<div class="container">
+
+		<hr />
+
+		<!-- Footer -->
+		<footer>
+			<div class="row">
+				<div class="col-lg-12">
+					
+				</div>
+			</div>
+		</footer>
+
+	</div>
+
+</body>
+
+</html>

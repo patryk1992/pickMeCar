@@ -78,8 +78,7 @@ public class TrackController {
 	public String searchTrackAll(Model model) {
 //		model.addAttribute("track", new Track());
 		List<Track> track = trackService.list();
-		model.addAttribute("trackList", trackService.list());
-		model.addAttribute("trackList", trackService.list());
+		model.addAttribute("trackList", trackService.list());		
 	
 		return "searchTrackResultTable";
 	}
@@ -87,15 +86,20 @@ public class TrackController {
 	public String myTrack(Model model) {
 //		model.addAttribute("track", new Track());
 		List<Track> track = trackService.list();
-		model.addAttribute("trackList", trackService.list());
-		model.addAttribute("track", trackService.list().get(0));
+		model.addAttribute("trackList", trackService.list());		
 		return "myTrack";
 	}
 	@RequestMapping(value = "/myTrack/{id}", method = RequestMethod.GET)
 	public String myTrack(Model model,@PathVariable Integer id) {
 //		model.addAttribute("track", new Track());
-		List<Track> track = trackService.list();		
-		model.addAttribute("track", trackService.list().get(0));
+		List<Track> trackList = trackService.list();
+		Track track = null;
+		for(Track x : trackList){
+			if(x.getId()==id){
+				track=x;
+			}
+		}
+		model.addAttribute("track", track);
 		model.addAttribute("trackList", trackService.list());	
 		return "myTrackEditForm";
 	}

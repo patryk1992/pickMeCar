@@ -2,6 +2,8 @@ package com.mgr.pickMeCar.service;
 
 import java.util.List;
 
+import org.springframework.data.repository.query.Param;
+
 import com.mgr.pickMeCar.db.model.User;
 
 public interface UserService {
@@ -12,4 +14,6 @@ public interface UserService {
 	public User saveOrUpdate(User user);
 
 	public void delete(int id);
+	
+	User findOneByName( String name);
 }

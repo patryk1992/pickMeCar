@@ -23,21 +23,24 @@ public class Mark implements java.io.Serializable {
 	private Integer id;
 	
 	private User user;
+	private User ratingUser;
 	private int rate;
 	private String description;
 
 	public Mark() {
 	}
 
-	public Mark(User user, int rate) {
+	public Mark(User user,User ratingUser, int rate) {
 		this.user = user;
 		this.rate = rate;
+		this.ratingUser= ratingUser;
 	}
 
-	public Mark(User user, int rate, String description) {
+	public Mark(User user,User ratingUser, int rate, String description) {
 		this.user = user;
 		this.rate = rate;
 		this.description = description;
+		this.ratingUser = ratingUser;
 	}
 
 	@Id
@@ -63,7 +66,18 @@ public class Mark implements java.io.Serializable {
 		this.user = user;
 	}
 
-	@Column(name = "rate", nullable = false)
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "idRatingUser")
+	public User getRatingUser() {
+		return ratingUser;
+	}
+
+	public void setRatingUser(User ratingUser) {
+		this.ratingUser = ratingUser;
+	}
+
+
+	@Column(name = "rate")
 	public int getRate() {
 		return this.rate;
 	}

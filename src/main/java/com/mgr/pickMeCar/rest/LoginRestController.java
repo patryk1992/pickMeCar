@@ -20,10 +20,10 @@ public class LoginRestController {
 
 	@RequestMapping(value = "rest-api/login", method = RequestMethod.POST)
 	public ResponseEntity<Void> login(@RequestBody User user) {
-		System.out.println("Login User " + user.getName());
+		System.out.println("Login User " + user.getUserName());
 		System.out.println("Login User " + userRepository.findAll());
-		User fuser = userRepository.findByName(user.getName()).size() > 0
-				? userRepository.findByName(user.getName()).get(0) : null;
+		User fuser = userRepository.findByUserName(user.getUserName()).size() > 0
+				? userRepository.findByUserName(user.getUserName()).get(0) : null;
 
 		if (fuser != null) {
 			if(fuser.getPassword().equals(user.getPassword())){

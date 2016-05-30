@@ -12,6 +12,7 @@ import com.mgr.pickMeCar.db.model.User;
 @RepositoryRestResource(collectionResourceRel = "user", path = "user")
 public interface UserRepository extends PagingAndSortingRepository<User, Integer> {
 
-	List<User> findByName(@Param("name") String name);
+	List<User> findByUserName(@Param("userName") String userName);
+	User findOneByUserName(@Param("userName") String userName);
 
 }

@@ -20,7 +20,7 @@
 			<div class="col-md-9">
 
 				<div id="resultsBlockTrack" class="thumbnail">
-					<div>
+					<div th:if="${not #lists.isEmpty(trackList)}">
 						<table class="table table-stripped">
 							<tr>
 								<th>Id</th>

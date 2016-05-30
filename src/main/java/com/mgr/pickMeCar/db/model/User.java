@@ -24,27 +24,38 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 @Table(name = "user", catalog = "drive_db")
 public class User implements java.io.Serializable {
 
+	
+
 	private Integer id;
 	
-	private String name;
+	private String userName;
 	private String email;
 	private String password;
-	private Set<UserGroup> userGroups = new HashSet<UserGroup>(0);
+	private int enabled;
+
+	private Set<UserRole> userGroups = new HashSet<UserRole>(0);
 	private Set<Mark> marks = new HashSet<Mark>(0);
 	private Set<UserTrack> userTracks = new HashSet<UserTrack>(0);
 	private Set<UserCar> userCars = new HashSet<UserCar>(0);
 
 	public User() {
 	}
-
+	public User(User user) {
+		super();
+		this.id = user.id;
+		this.userName = user.userName;
+		this.email = user.email;
+		this.password = user.password;
+		
+	}
 	public User(String password) {
 		this.password = password;
 	}
 
-	public User( String name, String email, String password, Set<UserGroup> userGroups, Set<Mark> marks,
+	public User( String name, String email, String password, Set<UserRole> userGroups, Set<Mark> marks,
 			Set<UserTrack> userTracks, Set<UserCar> userCars) {
 		
-		this.name = name;
+		this.userName = name;
 		this.email = email;
 		this.password = password;
 		this.userGroups = userGroups;
@@ -67,13 +78,13 @@ public class User implements java.io.Serializable {
 	
 	
 
-	@Column(name = "name", length = 40)
-	public String getName() {
-		return this.name;
+	@Column(name = "username", length = 40)
+	public String getUserName() {
+		return this.userName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setUserName(String name) {
+		this.userName = name;
 	}
 
 	@Column(name = "email", length = 45)
@@ -93,13 +104,20 @@ public class User implements java.io.Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	@Column(name ="enabled")
+	public int getEnabled() {
+		return enabled;
+	}
+	public void setEnabled(int enabled) {
+		this.enabled = enabled;
+	}
 
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
-	public Set<UserGroup> getUserGroups() {
+	public Set<UserRole> getUserGroups() {
 		return this.userGroups;
 	}
 
-	public void setUserGroups(Set<UserGroup> userGroups) {
+	public void setUserGroups(Set<UserRole> userGroups) {
 		this.userGroups = userGroups;
 	}
  

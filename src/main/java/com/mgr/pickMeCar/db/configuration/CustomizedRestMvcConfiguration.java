@@ -9,12 +9,11 @@ import org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguratio
 
 import com.mgr.pickMeCar.db.model.Car;
 
-import com.mgr.pickMeCar.db.model.Groups;
 import com.mgr.pickMeCar.db.model.Mark;
 
 import com.mgr.pickMeCar.db.model.Track;
 import com.mgr.pickMeCar.db.model.UserCar;
-import com.mgr.pickMeCar.db.model.UserGroup;
+import com.mgr.pickMeCar.db.model.UserRole;
 import com.mgr.pickMeCar.db.model.UserTrack;
 
 
@@ -29,8 +28,8 @@ public class CustomizedRestMvcConfiguration extends RepositoryRestMvcConfigurati
 	protected void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
 		config.setBasePath("/rest-api");
 		config.setReturnBodyOnCreate(true);
-		config.exposeIdsFor(Car.class,  Groups.class, Mark.class, 
-				Track.class, com.mgr.pickMeCar.db.model.User.class, UserCar.class, UserGroup.class,
+		config.exposeIdsFor(Car.class, Mark.class, 
+				Track.class, com.mgr.pickMeCar.db.model.User.class, UserCar.class, UserRole.class,
 				UserTrack.class);
 	}
 
