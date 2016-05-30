@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+</head>
+<body>
+			
+				<div th:fragment="resultsListUsers" >
+					<table class="table table-stripped">
+						<tr>
+							<th>Username</th>
+							<th>Action</th>							
+						</tr>
+						<tr th:each="userEl : ${userList}" >
+							<td th:text="${userEl.userName}"></td>	
+							<td>
+									<a href="#" th:href="${'/mark/idRatingUser=' + userEl.id}">add</a> 
+									</td>						
+						</tr>
+					</table>
+				</div>
+
+
+</body>
+
+</html>

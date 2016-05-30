@@ -16,7 +16,7 @@
 		<div class="row">			
 				
 				
-			
+			 <h2 class="form-signin-heading">My tracks</h2>
 			<div class="col-md-9">
 
 				<div id="resultsBlockTrack" class="thumbnail">
@@ -41,6 +41,7 @@
 								<td>
 									<a href="#" th:href="${'/myTrack/delete/' + trackEl.id}">del</a> 
 									<a href="#" th:href="${'/myTrack/' + trackEl.id}" >edit</a>
+									<a href="#" th:href="${'/myTrack/completed/' + trackEl.id}" >completed</a>
 								</td>
 							</tr>
 						</table>

@@ -3,6 +3,7 @@ package com.mgr.pickMeCar.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.mgr.pickMeCar.db.model.User;
@@ -12,7 +13,8 @@ import com.mgr.pickMeCar.db.repository.UserRepository;
 public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserRepository userRepository;
-
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 	@Override
 	public List<User> list() {
 		return (List<User>) userRepository.findAll();
@@ -25,6 +27,8 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User saveOrUpdate(User user) {
+		String encodedPassword=passwordEncoder.encode(user.getPassword());
+		user.setPassword(encodedPassword);
 		return userRepository.save(user);
 
 	}
@@ -36,8 +40,14 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User findOneByName(String name) {		
+	public User findOneByUserName(String name) {		
 		return userRepository.findOneByUserName(name);
 	}
+
+	@Override
+	public List<User> findByUserName(String userName) {
+		return userRepository.findByUserName(userName);
+	}
+	
 
 }

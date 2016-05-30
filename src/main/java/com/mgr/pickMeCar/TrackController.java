@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.mgr.pickMeCar.db.model.Track;
 import com.mgr.pickMeCar.db.model.User;
+import com.mgr.pickMeCar.service.MarkService;
 import com.mgr.pickMeCar.service.TrackService;
 import com.mgr.pickMeCar.service.UserService;
 
@@ -24,6 +25,8 @@ import com.mgr.pickMeCar.service.UserService;
 public class TrackController {
 	@Autowired
 	private TrackService trackService;
+	@Autowired
+	private MarkService markService;
 
 	private static final Logger logger = LoggerFactory.getLogger(TrackController.class);
 
@@ -36,7 +39,7 @@ public class TrackController {
 	@RequestMapping(value = "/addtrack/new", method = RequestMethod.POST)
 	public String saveTrack(Track track) {
 		trackService.saveOrUpdate(track);
-		return "greeting";
+		return "myTrack";
 	}
 
 	@RequestMapping(value = "/tracks", method = RequestMethod.GET)
@@ -104,8 +107,9 @@ public class TrackController {
 		return "myTrackEditForm";
 	}
 	@RequestMapping(value = "/myTrack/delete/{id}", method = RequestMethod.GET)
-	public String delete(@PathVariable Integer id) {
+	public String delete(Model model,@PathVariable Integer id) {
 		trackService.delete(id);		
+		model.addAttribute("trackList", trackService.list());		
 		return "myTrack";
 	}
 	@RequestMapping(value = "/myTrack/edit", method = RequestMethod.POST)
@@ -118,5 +122,11 @@ public class TrackController {
 	public String editForm(Model model) {
 				
 		return "myTrackEditForm";
+	}
+	@RequestMapping(value = "/myTrack/completed/{id}", method = RequestMethod.GET)
+	public String completed(Model model,@PathVariable Integer id) {
+		model.addAttribute("trackList", trackService.list());		
+		
+		return "searchUser";
 	}
 }
