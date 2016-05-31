@@ -24,7 +24,12 @@
         
         <button class="btn btn-lg btn-primary btn-block" type="submit" >Register</button>
       </form>
-
+		<div th:if="${param.error}">
+            Invalid username and password.
+        </div>
+        <div th:if="${param.logout}">
+            You have been logged out.
+        </div>
 
 	</div>
 	<!-- /.container -->

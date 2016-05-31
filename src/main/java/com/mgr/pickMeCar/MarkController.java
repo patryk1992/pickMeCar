@@ -50,8 +50,27 @@ public class MarkController {
 	@RequestMapping(value = "/mark/edit", method = RequestMethod.POST)
 	public String edit(Model model,Mark mark) {
 		model.addAttribute("userList", markService.list());	
-		markService.saveOrUpdate(mark);
+//		markService.saveOrUpdate(mark);
 		return "myTrack";
 	}
-
+	@RequestMapping(value = "/mark", method = RequestMethod.GET)
+	public String opinion(Model model,Mark mark) {
+		model.addAttribute("opinionList", markService.list());	
+//		markService.saveOrUpdate(mark);
+		return "opinion";
+	}
+	@RequestMapping(value = "/mark/{id}", method = RequestMethod.GET)
+	public String myTrack(Model model,@PathVariable Integer id) {
+//		model.addAttribute("track", new Track());
+		List<Mark> markList = markService.list();
+		Mark mark = null;
+		for(Mark x : markList){
+			if(x.getId()==id){
+				mark=x;
+			}
+		}
+		model.addAttribute("mark", mark);
+		model.addAttribute("markList", markService.list());	
+		return "opinionEditForm";
+	}
 }

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+
+</head>
+
+<body>
+
+	<!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+
+	<!-- Page Content -->
+	<div class="container">
+
+		<div class="row">			
+				
+				
+			 <h2 class="form-signin-heading">My opinions</h2>
+			<div class="col-md-9">
+
+				<div id="resultsBlockOpinion" class="thumbnail">
+					<div th:if="${not #lists.isEmpty(opinionList)}">
+						<table class="table table-stripped">
+							<tr>
+								<th>Rated user</th>
+<!-- 								<th>From Place</th> -->
+								<th>Rate</th>
+								<th>Description</th>								
+								<th >Actions</th>
+							</tr>
+							<tr th:each="opinionEl : ${opinionList}">
+								<td th:text="${opinionEl.user.userName}"></td>
+<!-- 								<td th:text="${opinionEl.ratingUser}"></td> -->
+								<td th:text="${opinionEl.rate}"></td>
+								<td th:text="${opinionEl.description}"></td>
+						
+								<td>
+									<a href="#" th:href="${'/mark/delete/' + opinionEl.id}">del</a> 
+									<a href="#" th:href="${'/mark/' + opinionEl.id}" >edit</a>									
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+
+</body>
+
+
+</html>

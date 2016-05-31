@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+ <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+
+</head>
+
+<body>
+
+ <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+
+	<!-- Page Content -->
+	<div class="container">
+
+		
+        
+        
+         <form class="form-signin" th:object="${mark}" th:action="@{/mark/edit}" method="post" >
+        <h2 class="form-signin-heading">Edit opinion</h2>
+        <input style="visibility: hidden" id="id_track" class="form-control" placeholder="id_track" th:field="*{id}"/>
+     
+        <label for="rate" class="sr-only">rate</label>
+        <input id="rate" class="form-control" placeholder="rate" th:field="*{rate}"/>
+        <label for="description"  class="sr-only">description</label>
+        <input  id="description"  class="form-control" placeholder="description" th:field="*{description}" />
+       
+       
+        <button class="btn btn-lg btn-primary btn-block" type="submit" >Edit</button>
+      </form>
+		<!-- <li><a href="#" th:href="@{/users}">users</a></li>
+		   <tr th:each="user : ${users}">             
+                <td th:text="${user.name}">Product Id</td>
+                <td th:text="${user.email}">descirption</td>
+                <td th:text="${user.password}">price</td>
+               
+            </tr> -->
+
+	</div>
+	<!-- /.container -->
+
+	<div class="container">
+
+		<hr />
+
+		<!-- Footer -->
+		<footer>
+			<div class="row">
+				<div class="col-lg-12">
+					
+				</div>
+			</div>
+		</footer>
+
+	</div>
+
+</body>
+
+</html>

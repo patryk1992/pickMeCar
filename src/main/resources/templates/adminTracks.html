@@ -19,7 +19,7 @@
 			 <h2 class="form-signin-heading">My tracks</h2>
 			<div class="col-md-9">
 
-				<div id="resultsBlockTrack" class="thumbnail">
+				<div id="resultsBlockAdminTracks" class="thumbnail">
 					<div th:if="${not #lists.isEmpty(trackList)}">
 						<table class="table table-stripped">
 							<tr>
@@ -39,9 +39,9 @@
 								<td th:text="${trackEl.startingTime}"></td>
 								<td th:text="${trackEl.price}"></td>
 								<td>
-									<a href="#" th:href="${'/myTrack/delete/' + trackEl.id}">del</a> 
-									<a href="#" th:href="${'/myTrack/' + trackEl.id}" >edit</a>
-									<a href="#" th:href="${'/myTrack/completed/' + trackEl.id}" >completed</a>
+									<a href="#" th:href="${'/admin/tracks/delete/' + trackEl.id}">del</a> 
+									<a href="#" th:href="${'/admin/tracks/' + trackEl.id}" >edit</a>
+									
 								</td>
 							</tr>
 						</table>

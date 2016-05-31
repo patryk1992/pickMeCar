@@ -14,7 +14,7 @@
 	<!-- Page Content -->
 	<div class="container">
 
-		  <form class="form-signin" th:object="${track}" th:action="@{/myTrack/edit}" method="post" >
+		  <form class="form-signin" th:object="${track}" th:action="@{/admin/tracks/edit}" method="post" >
         <h2 class="form-signin-heading">Edit track</h2>
         <input style="visibility: hidden" id="id_track" class="form-control" placeholder="id_track" th:field="*{id}"/>
         <label for="from_place" class="sr-only">from_place</label>
@@ -28,11 +28,7 @@
         <label for="price" class="sr-only">price</label>
         <input  id="price" class="form-control" placeholder="price" th:field="*{price}" />
        
-        <div class="checkbox">
-          <label>
-            <!-- <input type="checkbox" value="remember-me"> Remember me -->
-          </label>
-        </div>
+       
         <button class="btn btn-lg btn-primary btn-block" type="submit" >Edit</button>
       </form>
 		
