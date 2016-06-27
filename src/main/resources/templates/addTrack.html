@@ -14,7 +14,7 @@
 	<!-- Page Content -->
 	<div class="container">
 
-		 <form class="form-signin" th:object="${track}" th:action="@{/addtrack/new}" method="post" >
+	<form class="form-signin" th:object="${track}" th:action="@{/addtrack/new}" method="post" >
         <h2 class="form-signin-heading">Add track</h2>
         <label for="from_place" class="sr-only">from_place</label>
         <input  id="from_place" class="form-control" placeholder="from_place" th:field="*{fromPlace}"/>
@@ -26,12 +26,6 @@
         <input  id="starting_time" type="time" class="form-control" placeholder="starting_time" th:field="*{startingTime}" />
         <label for="price" class="sr-only">price</label>
         <input  id="price" class="form-control" placeholder="price" th:field="*{price}" />
-       
-        <div class="checkbox">
-          <label>
-            <!-- <input type="checkbox" value="remember-me"> Remember me -->
-          </label>
-        </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit" >Add</button>
       </form>
 		<!-- <li><a href="#" th:href="@{/users}">users</a></li>
